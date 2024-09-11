@@ -38,7 +38,7 @@ export class HistoriqueController {
     return this.historiqueService.update(+id, updateHistoriqueDto);
   }
 
-  @Delete(':id')
+  @Delete('supprimer/:id')
   remove(@Param('id') id: string) {
     return this.historiqueService.remove(+id);
   }

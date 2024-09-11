@@ -18,8 +18,11 @@ export class HospitalisesService {
   }
 
   async findAll() {
-    return await this.hospitaliseRepository.find();
-  }
+    return await this.hospitaliseRepository
+      .createQueryBuilder('hospitalise')
+      .orderBy('hospitalise.num', 'ASC')
+      .getMany();
+  }  
 
   async findOne(num: number) {
     return await this.hospitaliseRepository.findOne({

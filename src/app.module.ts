@@ -10,11 +10,14 @@ import { HospitalisesModule } from './hospitalises/hospitalises.module';
 import { ExternesModule } from './externes/externes.module';
 import { NotifsModule } from './notifs/notifs.module';
 import { MaterielModule } from './materiel/materiel.module';
-import { Materiel } from './materiel/entities/materiel.entity';
-import { Ressource } from './ressource/entities/ressource.entity';
+import { IntrantModule } from './intrant/intrant.module';
 import { HistoriqueModule } from './historique/historique.module';
+import { TesteModule } from './teste/teste.module';
+import { Materiel } from './materiel/entities/materiel.entity';
+import { Intrant } from './intrant/entities/intrant.entity';
 import { Historique } from './historique/entities/historique.entity';
-import { RessourceModule } from './ressource/ressource.module';
+import { Teste } from './teste/entities/teste.entity';
+
 
 
 @Module({
@@ -30,7 +33,7 @@ import { RessourceModule } from './ressource/ressource.module';
         username: configService.get('DB_USER'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [Personnel, Hospitalise, Externe, Notif, Materiel, Ressource, Historique], 
+        entities: [Personnel, Hospitalise, Externe, Notif, Materiel, Intrant, Historique, Teste], 
         synchronize: true,
       }),
     }),
@@ -39,8 +42,10 @@ import { RessourceModule } from './ressource/ressource.module';
     ExternesModule,
     NotifsModule,
     MaterielModule,
-    RessourceModule,
+    IntrantModule,
     HistoriqueModule,
+    TesteModule,
+   
     
   ],
 })

@@ -1,9 +1,12 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity({name : 'ressource'})
-export class Ressource {
-    @PrimaryColumn()
-    id : string;
+@Entity({name : 'intrant'})
+export class Intrant {
+    @PrimaryGeneratedColumn()
+    id : number;
+
+    @Column({unique:true})
+    presentation : string;
 
     @Column()
     designation : string;
@@ -40,5 +43,8 @@ export class Ressource {
 
     @Column({default : 1})
     dosage : number;
+
+    @Column({default : 0})
+    utilise : number;
 
 }

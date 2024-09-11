@@ -1,5 +1,7 @@
-export class CreateRessourceDto {
-    id : string;
+export class CreateIntrantDto {
+    id : number;
+
+    presentation : string;
 
     designation : string;
 
@@ -24,4 +26,6 @@ export class CreateRessourceDto {
     unite_mesure: string;
 
     dosage : number;
+
+    utilise : number;
 }
