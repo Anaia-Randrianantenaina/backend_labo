@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn} from "typeorm";
+import { Echantillon } from "src/echantillon/entities/echantillon.entity";
+import { Column, Entity, OneToMany, PrimaryColumn} from "typeorm";
 
 @Entity({name: "hospitalises"})
 export class Hospitalise {
@@ -28,4 +29,7 @@ export class Hospitalise {
 
     @Column ({type: "text", nullable: false})
     date_ajout: string
+
+    @OneToMany(() => Echantillon, (echantillon) => echantillon.patient)
+  echantillons: Echantillon[];
 }

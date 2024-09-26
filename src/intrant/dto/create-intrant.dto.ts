@@ -19,6 +19,8 @@ export class CreateIntrantDto {
 
     date_prescription: string;
 
+    date_ajout: string;
+
     numero_lot : number;
 
     quantite : number;

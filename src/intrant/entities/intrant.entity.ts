@@ -31,6 +31,9 @@ export class Intrant {
 
     @Column({nullable : true})
     date_prescription: Date;
+    
+    @Column({nullable : true})
+    date_ajout: Date;
 
     @Column({nullable : true})
     numero_lot : number;
@@ -46,5 +49,7 @@ export class Intrant {
 
     @Column({default : 0})
     utilise : number;
+
+    
 
 }

@@ -9,4 +9,6 @@ export class CreatePersonnelDto {
 
     contact: string;
 
+    date_ajout: string;
+
 }

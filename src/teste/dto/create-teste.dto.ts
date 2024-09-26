@@ -1,8 +1,20 @@
+import { IsNotEmpty, IsString } from 'class-validator';
+import { CreateResultatDto } from 'src/resultat/dto/create-resultat.dto';
+
 export class CreateTesteDto {
-name : string;
+  @IsString()
+  unite: string;
 
-description : string;
+  @IsString()
+  sous_unite: string;
 
-active : boolean;
+  @IsNotEmpty()
+  @IsString()
+  parametre: string;
 
+  @IsNotEmpty()
+  echantillonId: number;
+
+
+  testes: CreateResultatDto[];
 }
