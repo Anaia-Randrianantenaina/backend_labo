@@ -1,24 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { diskStorage } from 'multer';
-import { extname } from 'path';
-import { existsSync, mkdirSync } from 'fs';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { UploadedFileEntity } from './uploaded-file.entity';
 
 @Injectable()
 export class UploadService {
-  // Fonction pour sauvegarder un fichier et retourner son chemin
-  saveFile(file: Express.Multer.File): string {
-    const uploadDir = './uploads';
+  constructor(
+    @InjectRepository(UploadedFileEntity)
+    private readonly uploadedFileRepository: Repository<UploadedFileEntity>,
+  ) {}
 
-    // Crée le dossier s'il n'existe pas déjà
-    if (!existsSync(uploadDir)) {
-      mkdirSync(uploadDir, { recursive: true });
-    }
+  // Enregistre le chemin du fichier et son contenu
+  async saveFilePath(filePath: string, contenu: string): Promise<UploadedFileEntity> {
+    console.log(`Saving file path: ${filePath} with content: ${contenu}`);
+    
+    const uploadedFile = this.uploadedFileRepository.create({ filePath, contenu });
+    return this.uploadedFileRepository.save(uploadedFile);
+  }
 
-    const fileExtName = extname(file.originalname);
-    const fileName = `${Date.now()}-rapport${fileExtName}`;
-
-    const filePath = `${uploadDir}/${fileName}`;
-    // Retourne le chemin où le fichier a été enregistré
-    return filePath;
+  // Récupère tous les fichiers uploadés
+  async findAll(): Promise<UploadedFileEntity[]> {
+    return this.uploadedFileRepository.find();
   }
 }

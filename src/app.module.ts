@@ -12,9 +12,6 @@ import { NotifsModule } from './notifs/notifs.module';
 import { MaterielModule } from './materiel/materiel.module';
 import { IntrantModule } from './intrant/intrant.module';
 import { HistoriqueModule } from './historique/historique.module';
-import { Materiel } from './materiel/entities/materiel.entity';
-import { Intrant } from './intrant/entities/intrant.entity';
-import { Historique } from './historique/entities/historique.entity';
 import { Teste } from './teste/entities/teste.entity';
 import { Echantillon } from './echantillon/entities/echantillon.entity';
 import { EchantillonModule } from './echantillon/echantillon.module';
@@ -28,8 +25,13 @@ import { MedecinlocalsModule } from './medecinlocals/medecinlocals.module';
 import { Medecinexterne } from './medecinexternes/entities/medecinexterne.entity';
 import { Medecinlocal } from './medecinlocals/entities/medecinlocal.entity';
 import { UploadModule } from './upload/upload.module';
-import { FileModule } from './file/file.module';
-import { File } from './file/entities/file.entity';
+import { UploadedFileEntity } from './upload/uploaded-file.entity';
+import { Intrant } from './intrant/entities/intrant.entity';
+import { Materiel } from './materiel/entities/materiel.entity';
+import { Historique } from './historique/entities/historique.entity';
+
+
+
 
 @Module({
   imports: [
@@ -45,7 +47,7 @@ import { File } from './file/entities/file.entity';
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
         entities: [Personnel, Hospitalise, Externe, Notif, Materiel,
-           Intrant, Historique, Teste, Echantillon, Resultat, Analysis, Medecinexterne, Medecinlocal,File], 
+           Intrant, Historique, Teste, Echantillon, Resultat, Analysis, Medecinexterne, Medecinlocal, UploadedFileEntity,Intrant], 
         synchronize: true,
       }),
     }),
@@ -63,8 +65,8 @@ import { File } from './file/entities/file.entity';
     MedecinexternesModule,
     MedecinlocalsModule,
     UploadModule,
-    FileModule,
-
+    IntrantModule,
+    
     ],
 })
 export class AppModule {}

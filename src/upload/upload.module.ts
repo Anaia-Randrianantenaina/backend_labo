@@ -2,13 +2,11 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UploadService } from './upload.service';
 import { UploadController } from './upload.controller';
-import { File } from 'src/file/entities/file.entity';
+import { UploadedFileEntity } from './uploaded-file.entity';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([File]), // Assurez-vous que cette ligne est présente pour enregistrer l'entité
-  ],
-  providers: [UploadService],
+  imports: [TypeOrmModule.forFeature([UploadedFileEntity])], // Assurez-vous que l'entité est importée
   controllers: [UploadController],
+  providers: [UploadService],
 })
 export class UploadModule {}
